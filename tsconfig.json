@@ -19,9 +19,13 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
+    "noUncheckedIndexedAccess": true
   },
   "include": [
     "src",
+    "component",
+    "slice",
+    "page"
   ],
   "exclude": [
     "node_modules",

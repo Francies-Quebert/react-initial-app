@@ -3,3 +3,5 @@ import { handlers } from './handlers'
 
 // Setup requests interception using the given handlers.
 export const server = setupServer(...handlers)
+// Export the mock server
+export default server;

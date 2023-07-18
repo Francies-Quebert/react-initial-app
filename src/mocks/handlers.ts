@@ -1,28 +1,78 @@
 import { rest } from 'msw';
 
-export const handlers = [
-    rest.get('https://www.themealdb.com/api/json/v1/1/list.php', (req, res, ctx) => {
-        let i = req.url.searchParams.get('i');
-        // console.log(i, 'handlers list')
-        if (i === 'list') {
-            return res(
-                ctx.json({
-                    "meals": [
-                        {
-                            "idIngredient": "1",
-                            "strIngredient": "Chicken",
-                            "strDescription": "The chicken is a type of domesticated fowl, a subspecies of the red junglefowl (Gallus gallus). It is one of the most common and widespread domestic animals, with a total population of more than 19 billion as of 2011. There are more chickens in the world than any other bird or domesticated fowl. Humans keep chickens primarily as a source of food (consuming both their meat and eggs) and, less commonly, as pets. Originally raised for cockfighting or for special ceremonies, chickens were not kept for food until the Hellenistic period (4th–2nd centuries BC).\r\n\r\nGenetic studies have pointed to multiple maternal origins in South Asia, Southeast Asia, and East Asia, but with the clade found in the Americas, Europe, the Middle East and Africa originating in the Indian subcontinent. From ancient India, the domesticated chicken spread to Lydia in western Asia Minor, and to Greece by the 5th century BC. Fowl had been known in Egypt since the mid-15th century BC, with the \"bird that gives birth every day\" having come to Egypt from the land between Syria and Shinar, Babylonia, according to the annals of Thutmose III.",
-                            "strType": null
-                        },
-                        {
-                            "idIngredient": "2",
-                            "strIngredient": "Salmon",
-                            "strDescription": "Salmon is the common name for several species of ray-finned fish in the family Salmonidae. Other fish in the same family include trout, char, grayling and whitefish. Salmon are native to tributaries of the North Atlantic (genus Salmo) and Pacific Ocean (genus Oncorhynchus). Many species of salmon have been introduced into non-native environments such as the Great Lakes of North America and Patagonia in South America. Salmon are intensively farmed in many parts of the world.\r\n\r\nTypically, salmon are anadromous: they hatch in fresh water, migrate to the ocean, then return to fresh water to reproduce. However, populations of several species are restricted to fresh water through their lives. Folklore has it that the fish return to the exact spot where they hatched to spawn. Tracking studies have shown this to be mostly true. A portion of a returning salmon run may stray and spawn in different freshwater systems; the percent of straying depends on the species of salmon. Homing behavior has been shown to depend on olfactory memory. Salmon date back to the Neogene.",
-                            "strType": null
-                        }
-                    ]
-
-                }))
+type Users = {
+    "id": number,
+    "name": string,
+    "username": string,
+    "email": string,
+    "address": {
+        "street": string,
+        "suite": string,
+        "city": string,
+        "zipcode": string,
+        "geo": {
+            "lat": string,
+            "lng": string
         }
+    },
+    "phone": string,
+    "website": string,
+    "company": {
+        "name": string,
+        "catchPhrase": string,
+        "bs": string
+    }
+}
+
+const users: Users[] = [{
+    "id": 5,
+    "name": "Chelsey Dietrich",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "address": {
+        "street": "Skiles Walks",
+        "suite": "Suite 351",
+        "city": "Roscoeview",
+        "zipcode": "33263",
+        "geo": {
+            "lat": "-31.8129",
+            "lng": "62.5342"
+        }
+    },
+    "phone": "(254)954-1289",
+    "website": "demarco.info",
+    "company": {
+        "name": "Keebler LLC",
+        "catchPhrase": "User-centric fault-tolerant solution",
+        "bs": "revolutionize end-to-end systems"
+    }
+}, {
+    "id": 10,
+    "name": "Clementina DuBuque",
+    "username": "Moriah.Stanton",
+    "email": "Rey.Padberg@karina.biz",
+    "address": {
+        "street": "Kattie Turnpike",
+        "suite": "Suite 198",
+        "city": "Lebsackbury",
+        "zipcode": "31428-2261",
+        "geo": {
+            "lat": "-38.2386",
+            "lng": "57.2232"
+        }
+    },
+    "phone": "024-648-3804",
+    "website": "ambrose.net",
+    "company": {
+        "name": "Hoeger LLC",
+        "catchPhrase": "Centralized empowering task-force",
+        "bs": "target end-to-end models"
+    }
+}]
+
+export const handlers = [
+    rest.get('https://jsonplaceholder.typicode.com/users', (req, res, ctx) => {
+        return res(
+            ctx.json(users))
     })
 ]
