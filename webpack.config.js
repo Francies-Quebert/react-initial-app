@@ -1,7 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env, argv) => {
     const isProduction = argv.mode === 'production';
@@ -50,14 +50,17 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: './public/index.html',
                 filename: './index.html',
-            })
+            }),
+            new Dotenv(),
         ] : [
             new HtmlWebpackPlugin({
                 title: 'Receipe Generator',
                 template: './public/index.html',
                 filename: './index.html',
                 base: '/'
-            })],
+            }),
+            new Dotenv(),
+        ],
         devServer: {
             port: 3000,
             historyApiFallback: true,
