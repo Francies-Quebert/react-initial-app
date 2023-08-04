@@ -10,25 +10,6 @@ function App() {
 
 
     (async () => {
-
-      // const options = {
-      //   method: 'GET',
-      //   url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
-      //   params: {model: 'corolla'},
-      //   headers: {
-      //     'X-RapidAPI-Key': '52bb8091aamsh914b5d9a1401020p14caf7jsnd98145f1e65c',
-      //     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
-      //   }
-      // };
-
-      // try {
-      //   const response = await axios.request(options);
-      //   console.log(response.data);
-      // } catch (error) {
-      //   console.error(error);
-      // }
-
-      // console.log(process.env.REACT_APP_RapidAPI_Key, process.env.REACT_APP_RapidAPI_HOST)
       try {
         const response = await axios.get('cars', {
           params: { model: 'corolla', limit: 50 }
