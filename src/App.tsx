@@ -1,7 +1,28 @@
 import logo from './assets/logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import axios from './lib/axios';
 
 function App() {
+
+  useEffect(() => {
+
+
+
+    (async () => {
+      try {
+        const response = await axios.get('cars', {
+          params: { model: 'corolla', limit: 50 }
+        });
+        console.log(response.data, 'DATATA');
+      } catch (error) {
+        console.error(error);
+      }
+    })()
+
+
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
