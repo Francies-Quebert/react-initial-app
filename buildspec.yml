@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      # Install dependencies and build your application
+      - npm install
+      - npm run build
+
+artifacts:
+  files:
+    # Specify the files to be deployed
+    - '**/*'
