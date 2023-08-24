@@ -12,6 +12,7 @@ module.exports = (env, argv) => {
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
+            assetModuleFilename:'images/[hash][ext][query]'
         },
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -30,12 +31,6 @@ module.exports = (env, argv) => {
                 }, {
                     test: /\.(css)$/,
                     use: ['style-loader', 'css-loader', "postcss-loader"],
-                }, {
-                    test: /\.(jpe?g|png|gif|svg)$/i,
-                    loader: 'file-loader',
-                    options: {
-                        name: 'assets/[name].[ext]'
-                    }
                 }
             ],
         },
