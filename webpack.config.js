@@ -31,6 +31,10 @@ module.exports = (env, argv) => {
                 }, {
                     test: /\.(css)$/,
                     use: ['style-loader', 'css-loader', "postcss-loader"],
+                },
+                {
+                    test: /\.(jpe?g|png|gif|svg)$/i,
+                    type: 'asset/resource',
                 }
             ],
         },
@@ -40,16 +44,10 @@ module.exports = (env, argv) => {
                 name: 'runtime',
             },
         } : { minimize: true, },
-        plugins: isProduction ? [
+        plugins: [
             new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
-                template: './public/index.html',
-                filename: './index.html',
-            }),
-            new Dotenv(),
-        ] : [
-            new HtmlWebpackPlugin({
-                title: 'Receipe Generator',
+                title: 'Intial Bolierplate',
                 template: './public/index.html',
                 filename: './index.html',
                 base: '/'
